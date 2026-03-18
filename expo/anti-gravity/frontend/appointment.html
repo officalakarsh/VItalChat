@@ -1,0 +1,361 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.html");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Care - Vital Chat Health</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <i class='bx bx-pulse'></i> Vital Chat
+        </a>
+        <nav class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="clinics.html">Find Clinics</a>
+            <a href="appointment.html" class="active">Book Care</a>
+        </nav>
+        <div class="nav-actions">
+            <div id="google_translate_element" class="lang-select"></div>
+            <!-- Ensure it points to the PHP logout script -->
+            <a href="../backend-php/api/logout.php" class="logout-btn" style="color:#ef4444; font-weight: 600;"><i class='bx bx-log-out'></i> Sign Out</a>
+        </div>
+    </header>
+
+    <div style="padding: 10rem 5%;">
+        <h1>Book Care</h1>
+        <p>Select a hospital below to book your appointment.</p>
+        
+        <div class="hospital-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; margin-top: 2rem;">
+
+            <!-- Hospital 1 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Jeevan Rekha Superspeciality Hospital</h3>
+                    <span style="background: #16a34a; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">Open</span>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 4.6 &bull; Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> S24, Central Spine, Mahal Yojana, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 141 4846060</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 2 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Aarogyam Hospital</h3>
+                    <span style="background: #16a34a; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">Open</span>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 4.8 &bull; General Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> Aarogyam Hospital Road, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 95295 49090</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 3 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Srishti Hospital</h3>
+                    <span style="background: #16a34a; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">Open</span>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 4.9 &bull; Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> F1 &amp; 10, Central Spine, Mahal Rd, Jagatpura, Shri Kishanpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 93762 66610</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 4 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Rishab Multispeciality Hospital</h3>
+                    <span style="background: #ef4444; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">Closed</span>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 4.6 &bull; Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> Rishab Hospital Choraha, Vishwa Vidhyalaya Nagar, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 92570 43779</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 5 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Thakuriya Hospital</h3>
+                    <span style="background: #16a34a; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">Open</span>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 4.9 &bull; Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 71, Opposite Mahima Panache, Nandpuri B, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 70140 98701</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 6 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">B L Multispeciality Hospital</h3>
+                    <span style="background: #16a34a; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">Open</span>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 5.0 &bull; Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 10A, Near Jagatpura Flyover, Brij Vihar, Railway Colony, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> Not publicly listed</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 7 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">JNU Main Campus (University, Hospital &amp; Medical College)</h3>
+                    <span style="background: #ef4444; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">Closed</span>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 3.3 &bull; Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> Agra–Jaipur Road, Near New RTO Office, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 141 3119000</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 8 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Patalia Hospital &amp; Research Center</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 4.4 &bull; Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> RRMP+V48, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 98291 92007</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 9 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Shri Hospital</h3>
+                    <span style="background: #16a34a; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">Open</span>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 3.3 &bull; Private Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 4, Hare Krishna Marg, Shyam Vihar Colony, Vishnupuri, Model Town, Malviya Nagar, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 141 2752880</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 10 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Vijay Vergia Hospital</h3>
+                    <span style="background: #ef4444; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">Closed</span>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 3.9 &bull; Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 9, Jagatpura Rd, Shyam Vihar Colony, Vishnupuri, Model Town, Malviya Nagar, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 141 2751100</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 11 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Tirupati Sanjeevani Hospital</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 3.9 &bull; Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> G-63A, Tirupati Nagar, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 94626 96588</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Hospital 12 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">DSR Multi Speciality Hospital</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> 4.3 &bull; Hospital</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> RRJR+JW5, Jagatpura Flyover, Income Tax Colony, Railway Colony, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> Not publicly listed</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 13 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Ped Gastro Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> A-166, Ramnagariya JDA Scheme, Near SKIT Engineering College, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> Not publicly listed</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 14 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Dr Ashish Rana Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> A-106, Ashadeep Green Avenue, Mahal Road, Near Akshay Patra Temple, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 91526 15811</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 15 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Bhagwati Ayurveda &amp; Panchakarma Centre</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Ayurveda Centre</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> A-8, Vinayak Enclave, Near Gyan Vihar University, Jagatpura Getor, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 89053 65005</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 16 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Pain Relief Paralysis Physiotherapy Centre</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Physiotherapy Centre</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> Ramnagariya Road, Near Akshay Patra Temple, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 98290 30171</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 17 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Aangann MediTrust Polyclinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Polyclinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 7-A, Model Town, Jagatpura Road, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 98290 59859</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 18 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Neha Lakhi Healthcare Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Healthcare Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 96, Brij Vihar, Railway Colony, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 94610 35060</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 19 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Dr Nitika Gupta Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 22, Shyam Vihar Colony, Jagatpura Road, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 97822 36888</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 20 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Sadhnani Dental Care</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Dental Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 43, Model Town, Jagatpura Road, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 98280 57547</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 21 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Lol Dental Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Dental Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 54, Nandpuri Colony, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 94142 22270</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 22 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Bhardwaj Dental Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Dental Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> Jagatpura Road, Near Akshay Patra Circle, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 98870 78701</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 23 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Om Skin &amp; Hair Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Skin &amp; Hair Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 4-B, Model Town, Jagatpura Road, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 94142 92920</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 24 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Radiant Skin Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Skin Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> Ramnagariya Road, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 96029 12554</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 25 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">City Physiotherapy &amp; Rehab Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Physiotherapy Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 8-A, Model Town, Jagatpura Road, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 98293 87711</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 26 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">Jagatpura Child Care Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Child Care Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> 21, Ramnagariya Road, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 94142 33306</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+            <!-- Clinic 27 -->
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h3 style="margin: 0;">ArogyaLaxmi Clinic</h3>
+                </div>
+                <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #94a3b8;"><i class='bx bxs-star' style="color: #facc15;"></i> Clinic</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-map' style="color: var(--primary);"></i> D-44, Roop Vihar Colony, Siddharth Nagar, Jagatpura, Jaipur, Rajasthan 302017</p>
+                <p style="margin: 0.5rem 0;"><i class='bx bx-phone' style="color: var(--primary);"></i> +91 98290 19006</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">Book Appointment</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,ta,te,ur',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
